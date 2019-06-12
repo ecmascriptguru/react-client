@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { Auth } from 'aws-amplify';
 import LoaderButton from '../components/LoaderButton';
 import "./Login.css";
@@ -31,7 +31,6 @@ export default class Login extends Component {
         try {
             await Auth.signIn(this.state.email, this.state.password);
             this.props.userHasAuthenticated(true);
-            this.props.history.push('/')
         } catch (e) {
             alert(e.message);
             this.setState({ isLoading: false })
